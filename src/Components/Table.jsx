@@ -18,18 +18,16 @@ const Table = () => {
   const [finish, setFinish] = useState(null);
   const [active, setActive] = useState(false);
 
-  document.onmouseup = () => setMouseDown(false);
+  document.onmouseup = () => {
+    setMouseDown(false);
+    setFinish(null);
+    setStart(null);
+  };
   document.onmousedown = () => setMouseDown(true);
 
   const onMouseDown = (e, row, cellIndex, active) => {
     setStart({row, cellIndex})
     setActive(!active)
-  }
-
-  const onMouseUp = () => {
-    setMouseDown(false);
-    setFinish(null);
-    setStart(null);
   }
 
   const handleMouseMove = (e, row, cellIndex) => {
@@ -73,7 +71,6 @@ const Table = () => {
           row && row.map(cell => (<TableCell
             key={cell.id}
             onMouseDown={onMouseDown}
-            onMouseUp={onMouseUp}
             {...cell}
             onMouseMove={handleMouseMove}/>))
         }
