@@ -27,6 +27,7 @@ const Table = () => {
 
   const onMouseDown = (e, row, cellIndex, active) => {
     setStart({row, cellIndex})
+    setFinish({row, cellIndex})
     setActive(!active)
   }
 
@@ -60,7 +61,7 @@ const Table = () => {
 
   useEffect(() => {
     if (start && finish) {
-      brushMatrix()
+      brushMatrix();
     }
   }, [start, finish])
 
